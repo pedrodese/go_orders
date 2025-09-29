@@ -16,7 +16,7 @@ import (
 
 func main() {
 	cfg := config.Load()
-	log.Printf("🚀 Iniciando Order Service na porta %s", cfg.Server.Port)
+	log.Printf("Iniciando Order Service na porta %s", cfg.Server.Port)
 
 	database, err := db.Connect(&cfg.Database)
 	if err != nil {

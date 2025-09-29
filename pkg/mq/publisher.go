@@ -64,7 +64,7 @@ func (p *publisher) PublishOrderEvent(eventType string, orderID uint, data inter
 	// Criar evento
 	event := OrderEvent{
 		Type:    eventType,
-		OrderID: orderID,
+		OrderID: int(orderID),
 		Data:    data,
 	}
 
@@ -86,7 +86,7 @@ func (p *publisher) PublishOrderEvent(eventType string, orderID uint, data inter
 			Body:         body,
 			Headers: amqp.Table{
 				"event_type": eventType,
-				"order_id":   orderID,
+				"order_id":   int(orderID),
 			},
 		},
 	)
@@ -111,6 +111,6 @@ func (p *publisher) Close() error {
 
 type OrderEvent struct {
 	Type    string `json:"type"`
-	OrderID uint   `json:"order_id"`
+	OrderID int    `json:"order_id"`
 	Data    any    `json:"data"`
 }

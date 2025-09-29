@@ -50,12 +50,12 @@ func Connect(cfg *config.DatabaseConfig) (*gorm.DB, error) {
 		return nil, fmt.Errorf("failed to ping database: %w", err)
 	}
 
-	log.Println("✅ Conectado ao PostgreSQL")
+	log.Println("Conectado ao PostgreSQL")
 	return db, nil
 }
 
 func Migrate(db *gorm.DB) error {
-	log.Println("🔄 Executando migrations...")
+	log.Println("Executando migrations...")
 
 	err := db.AutoMigrate(
 		&model.Order{},
@@ -66,6 +66,6 @@ func Migrate(db *gorm.DB) error {
 		return fmt.Errorf("failed to migrate database: %w", err)
 	}
 
-	log.Println("✅ Migrations executadas com sucesso")
+	log.Println("Migrations executadas com sucesso")
 	return nil
 }
