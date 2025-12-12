@@ -1,6 +1,7 @@
 package config
 
 import (
+	"log"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -35,7 +36,11 @@ type RabbitMQConfig struct {
 
 func Load() *Config {
 	// Tenta carregar .env se existir
-	godotenv.Load()
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+		return nil
+	}
 
 	return &Config{
 		Server: ServerConfig{
